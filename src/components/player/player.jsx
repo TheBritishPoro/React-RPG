@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import WalkSprite from "../../img/walkSprite.png";
 import HandleMovement from "./movement.js";
 
@@ -17,8 +16,8 @@ class Player extends Component {
       <div
         style={{
           position: "absolute",
-          top: this.props.position[1],
-          left: this.props.position[0],
+          top: 0,
+          left: 0,
           backgroundImage: `url('${WalkSprite}')`,
           backgroundPosition: "0 0",
           width: "32px",
@@ -26,12 +25,6 @@ class Player extends Component {
         }}
       />
     );
-  };
-
-  mapStateToProps = state => {
-    return {
-      ...state.player
-    };
   };
 }
 
