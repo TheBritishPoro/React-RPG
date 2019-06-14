@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import WalkSprite from "../../img/walkSprite.png";
-import HandleMovement from "./movement";
+import HandleMovement from "./movement.jsx";
 
 function player(props) {
   return (

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Player from "../player";
-import Map from "../map";
+import Player from "../player/player.jsx";
+import Map from "../map/map.jsx";
 
 function world(props) {
   return (

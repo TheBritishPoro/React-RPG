@@ -1,5 +1,5 @@
 import React from "react";
-import World from "./features/world";
+import World from "./components/world/world.jsx";
 
 function App() {
   return (
