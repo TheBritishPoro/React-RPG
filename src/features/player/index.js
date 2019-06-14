@@ -6,13 +6,13 @@ function player(props) {
   return (
     <div
       style={{
-        position: "relative",
+        position: "absolute",
         top: props.position[1],
         left: props.position[0],
         backgroundImage: `url('${walkSprite}')`,
         backgroundPosition: "0 0",
-        width: "40px",
-        height: "60px"
+        width: "32px",
+        height: "36px"
       }}
     />
   );

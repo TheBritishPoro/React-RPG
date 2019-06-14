@@ -1,11 +1,11 @@
 import React from "react";
-import Player from "./features/player";
+import World from "./features/world";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header" />
-      <Player />
+      <World />
     </div>
   );
 }
