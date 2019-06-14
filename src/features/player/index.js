@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import walkSprite from "../../img/walkSprite.png";
+import WalkSprite from "../../img/walkSprite.png";
+import HandleMovement from "./movement";
 
 function player(props) {
   return (
@@ -9,7 +10,7 @@ function player(props) {
         position: "absolute",
         top: props.position[1],
         left: props.position[0],
-        backgroundImage: `url('${walkSprite}')`,
+        backgroundImage: `url('${WalkSprite}')`,
         backgroundPosition: "0 0",
         width: "32px",
         height: "36px"
@@ -24,4 +25,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(player);
+export default connect(mapStateToProps)(HandleMovement(player));
