@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-
 function handleMovement(player) {
   function handleKeyDown(e) {
-    e.preventDefault();
+    if (e.keyCode < 112 || e.keyCode > 123) {
+      e.preventDefault();
+    }
     switch (e.keyCode) {
       case 37:
         console.log("WEST");
