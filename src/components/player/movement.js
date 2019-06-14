@@ -1,31 +1,72 @@
-function handleMovement(e) {
+function handleMovement(e, context) {
   if (e.keyCode < 112 || e.keyCode > 123) {
     e.preventDefault();
   }
+
+  function directionMove(direction) {
+    switch (direction) {
+      case "NORTH":
+        context.updatePosition(
+          context.state.position[0],
+          context.state.position[1] - 10 >= 3
+            ? context.state.position[1] - 10
+            : 3
+        );
+        break;
+      case "SOUTH":
+        context.updatePosition(
+          context.state.position[0],
+          context.state.position[1] + 10 <= 364
+            ? context.state.position[1] + 10
+            : 364
+        );
+        break;
+      case "WEST":
+        context.updatePosition(
+          context.state.position[0] - 10 >= 3
+            ? context.state.position[0] - 10
+            : 3,
+          context.state.position[1]
+        );
+        break;
+      case "EAST":
+        context.updatePosition(
+          context.state.position[0] + 10 <= 768
+            ? context.state.position[0] + 10
+            : 768,
+          context.state.position[1]
+        );
+        break;
+      default:
+        console.log(direction);
+        break;
+    }
+  }
+
   switch (e.keyCode) {
     case 37:
-      console.log("WEST");
+      directionMove("WEST");
       break;
     case 38:
-      console.log("NORTH");
+      directionMove("NORTH");
       break;
     case 39:
-      console.log("EAST");
+      directionMove("EAST");
       break;
     case 40:
-      console.log("SOUTH");
+      directionMove("SOUTH");
       break;
     case 65:
-      console.log("WEST");
+      directionMove("WEST");
       break;
     case 68:
-      console.log("EAST");
+      directionMove("EAST");
       break;
     case 83:
-      console.log("SOUTH");
+      directionMove("SOUTH");
       break;
     case 87:
-      console.log("NORTH");
+      directionMove("NORTH");
       break;
     default:
       console.log(e.keyCode);

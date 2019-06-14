@@ -9,6 +9,19 @@ class Player extends Component {
     super(props);
     this.state = {};
   }
+
+  componentDidMount() {
+    window.addEventListener("keydown", e => {
+      HandleMovement(e, this.context);
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("keydown", e => {
+      HandleMovement(e, this.context);
+    });
+  }
+
   render() {
     return <div>{this.renderPlayer(this.props)}</div>;
   }
@@ -29,9 +42,5 @@ class Player extends Component {
     );
   };
 }
-
-window.addEventListener("keydown", e => {
-  HandleMovement(e);
-});
 
 export default Player;

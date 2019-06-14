@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export const AppContext = React.createContext();
 
 class ContextProvider extends Component {
-  state = { position: [0, 0] };
+  state = { position: [3, 3] };
   render() {
     return (
       <AppContext.Provider
