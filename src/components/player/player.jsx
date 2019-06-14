@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import WalkSprite from "../../img/walkSprite.png";
 import HandleMovement from "./movement.js";
+import { AppContext } from "../../ContextProvider";
 
 class Player extends Component {
+  static contextType = AppContext;
   constructor(props) {
     super(props);
     this.state = {};
@@ -16,8 +18,8 @@ class Player extends Component {
       <div
         style={{
           position: "absolute",
-          top: 0,
-          left: 0,
+          top: this.context.state.position[1],
+          left: this.context.state.position[0],
           backgroundImage: `url('${WalkSprite}')`,
           backgroundPosition: "0 0",
           width: "32px",
@@ -27,5 +29,9 @@ class Player extends Component {
     );
   };
 }
+
+window.addEventListener("keydown", e => {
+  HandleMovement(e);
+});
 
 export default Player;
