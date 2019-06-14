@@ -10,7 +10,7 @@ function handleMovement(e, context) {
           context.state.position[0],
           context.state.position[1] - 10 >= 3
             ? context.state.position[1] - 10
-            : 3
+            : 364
         );
         break;
       case "SOUTH":
@@ -18,14 +18,14 @@ function handleMovement(e, context) {
           context.state.position[0],
           context.state.position[1] + 10 <= 364
             ? context.state.position[1] + 10
-            : 364
+            : 3
         );
         break;
       case "WEST":
         context.updatePosition(
           context.state.position[0] - 10 >= 3
             ? context.state.position[0] - 10
-            : 3,
+            : 748,
           context.state.position[1]
         );
         break;
@@ -33,7 +33,7 @@ function handleMovement(e, context) {
         context.updatePosition(
           context.state.position[0] + 10 <= 768
             ? context.state.position[0] + 10
-            : 768,
+            : 3,
           context.state.position[1]
         );
         break;
