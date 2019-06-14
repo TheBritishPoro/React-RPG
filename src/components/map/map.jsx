@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import GrassBG from "../../img/grassbg.jpg";
 
 class Map extends Component {
   constructor(props) {
@@ -12,9 +13,9 @@ class Map extends Component {
         style={{
           width: "800px",
           height: "400px",
-          backgroundColor: "green",
           border: "4px solid white",
-          margin: "10px auto  "
+          margin: "10px auto",
+          backgroundImage: `url('${GrassBG}')`
         }}
       />
     );
