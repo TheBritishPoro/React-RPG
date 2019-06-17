@@ -3,7 +3,13 @@ import React, { Component } from "react";
 export const AppContext = React.createContext();
 
 class ContextProvider extends Component {
-  state = { width: 800, height: 400, position: [3, 3], score: 0 };
+  state = {
+    width: 800,
+    height: 400,
+    position: [3, 3],
+    score: 0,
+    playerSprite: [0, 0]
+  };
   render() {
     return (
       <AppContext.Provider
@@ -12,6 +18,11 @@ class ContextProvider extends Component {
           updatePosition: (x, y) => {
             this.setState({
               position: [x, y]
+            });
+          },
+          updateSprite: (a, b) => {
+            this.setState({
+              playerSprite: [a, b]
             });
           }
         }}

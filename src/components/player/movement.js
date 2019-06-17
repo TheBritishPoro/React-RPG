@@ -12,6 +12,20 @@ function handleMovement(e, context) {
             ? context.state.position[1] - 10
             : 364
         );
+        switch (context.state.playerSprite[0]) {
+          case 0:
+            context.updateSprite(-32, -105);
+            break;
+          case -32:
+            context.updateSprite(-64, -105);
+            break;
+          case -64:
+            context.updateSprite(0, -105);
+            break;
+          default:
+            context.updateSprite(0, -105);
+            break;
+        }
         break;
       case "SOUTH":
         context.updatePosition(
@@ -20,6 +34,20 @@ function handleMovement(e, context) {
             ? context.state.position[1] + 10
             : 3
         );
+        switch (context.state.playerSprite[0]) {
+          case 0:
+            context.updateSprite(-32, 0);
+            break;
+          case -32:
+            context.updateSprite(-64, 0);
+            break;
+          case -64:
+            context.updateSprite(0, 0);
+            break;
+          default:
+            context.updateSprite(0, 0);
+            break;
+        }
         break;
       case "WEST":
         context.updatePosition(
@@ -28,6 +56,20 @@ function handleMovement(e, context) {
             : 748,
           context.state.position[1]
         );
+        switch (context.state.playerSprite[0]) {
+          case 0:
+            context.updateSprite(-32, -35);
+            break;
+          case -32:
+            context.updateSprite(-64, -35);
+            break;
+          case -64:
+            context.updateSprite(0, -35);
+            break;
+          default:
+            context.updateSprite(0, -35);
+            break;
+        }
         break;
       case "EAST":
         context.updatePosition(
@@ -36,6 +78,20 @@ function handleMovement(e, context) {
             : 3,
           context.state.position[1]
         );
+        switch (context.state.playerSprite[0]) {
+          case 0:
+            context.updateSprite(-32, -70);
+            break;
+          case -32:
+            context.updateSprite(-64, -70);
+            break;
+          case -64:
+            context.updateSprite(0, -70);
+            break;
+          default:
+            context.updateSprite(0, -70);
+            break;
+        }
         break;
       default:
         console.log(direction);

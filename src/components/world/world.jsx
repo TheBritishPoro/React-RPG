@@ -31,7 +31,7 @@ class World extends Component {
   renderTrees = () => {
     let items = [];
     for (let i = 0; i < 4; i++) {
-      items.push(<Tree width="83" height="74" />);
+      items.push(<Tree key={"tree" + i} width="83" height="74" />);
     }
     return items;
   };
