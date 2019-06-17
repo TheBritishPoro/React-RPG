@@ -23,7 +23,7 @@ class World extends Component {
       >
         <Map />
         <Player />
-        <Tree />
+        <Tree width="83" height="74" />
       </div>
     );
   }

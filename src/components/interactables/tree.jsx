@@ -7,25 +7,29 @@ class Tree extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 83,
-      height: 74
+      x: undefined,
+      y: undefined
     };
   }
+
+  componentDidMount() {
+    this.setState({
+      x: this.generatePosition(this.context.state.width - this.props.width),
+      y: this.generatePosition(this.context.state.height - this.props.height)
+    });
+  }
+
   render() {
     return (
       <div
         style={{
           position: "absolute",
-          top: this.generatePosition(
-            this.context.state.height - this.state.height
-          ),
-          left: this.generatePosition(
-            this.context.state.width - this.state.width
-          ),
+          top: this.state.y,
+          left: this.state.x,
           backgroundImage: `url('${TreeSprite}')`,
           backgroundPosition: "0 0",
-          width: this.state.width + "px",
-          height: this.state.height + "px"
+          width: this.props.width + "px",
+          height: this.props.height + "px"
         }}
       />
     );
