@@ -23,9 +23,17 @@ class World extends Component {
       >
         <Map />
         <Player />
-        <Tree width="83" height="74" />
+        {this.renderTrees()}
       </div>
     );
   }
+
+  renderTrees = () => {
+    let items = [];
+    for (let i = 0; i < 4; i++) {
+      items.push(<Tree width="83" height="74" />);
+    }
+    return items;
+  };
 }
 export default World;

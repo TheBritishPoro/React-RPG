@@ -14,8 +14,14 @@ class Tree extends Component {
 
   componentDidMount() {
     this.setState({
-      x: this.generatePosition(this.context.state.width - this.props.width),
-      y: this.generatePosition(this.context.state.height - this.props.height)
+      x: this.generatePosition(
+        this.context.state.width - this.props.width,
+        "x"
+      ),
+      y: this.generatePosition(
+        this.context.state.height - this.props.height,
+        "y"
+      )
     });
   }
 
@@ -35,8 +41,21 @@ class Tree extends Component {
     );
   }
 
-  generatePosition = max => {
-    return Math.floor(Math.random() * Math.floor(max));
+  generatePosition = (max, axis) => {
+    const playerX = this.context.state.position[0];
+    const playerY = this.context.state.position[1];
+    while (true) {
+      let randpos = Math.floor(Math.random() * Math.floor(max));
+      if (axis === "x") {
+        if (Math.sqrt(Math.pow(playerX - randpos, 2)) > 32) {
+          return randpos;
+        }
+      } else {
+        if (Math.sqrt(Math.pow(playerY - randpos, 2)) > 36) {
+          return randpos;
+        }
+      }
+    }
   };
 }
 
