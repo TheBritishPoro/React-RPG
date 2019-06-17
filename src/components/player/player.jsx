@@ -23,10 +23,6 @@ class Player extends Component {
   }
 
   render() {
-    return <div>{this.renderPlayer(this.props)}</div>;
-  }
-
-  renderPlayer = () => {
     return (
       <div
         style={{
@@ -40,7 +36,7 @@ class Player extends Component {
         }}
       />
     );
-  };
+  }
 }
 
 export default Player;

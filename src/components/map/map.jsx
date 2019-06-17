@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import GrassBG from "../../img/grassbg.jpg";
+import { AppContext } from "../../ContextProvider";
 
 class Map extends Component {
+  static contextType = AppContext;
   constructor(props) {
     super(props);
     this.state = {};
@@ -11,11 +12,11 @@ class Map extends Component {
     return (
       <div
         style={{
-          width: "800px",
-          height: "400px",
+          width: this.context.state.width + "px",
+          height: this.context.state.height + "px",
           border: "4px solid white",
           margin: "10px auto",
-          backgroundImage: `url('${GrassBG}')`
+          backgroundColor: "orange"
         }}
       />
     );
