@@ -13,7 +13,7 @@ class World extends Component {
 
   trees = [];
 
-  componentDidMount() {
+  componentWillMount() {
     this.trees = this.renderTrees();
   }
 
