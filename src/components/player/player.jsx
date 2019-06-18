@@ -9,11 +9,20 @@ class Player extends Component {
     super(props);
     this.state = {};
   }
-  render() {
-    return <div>{this.renderPlayer(this.props)}</div>;
+
+  componentDidMount() {
+    window.addEventListener("keydown", e => {
+      HandleMovement(e, this.context);
+    });
   }
 
-  renderPlayer = () => {
+  componentWillUnmount() {
+    window.removeEventListener("keydown", e => {
+      HandleMovement(e, this.context);
+    });
+  }
+
+  render() {
     return (
       <div
         style={{
@@ -21,17 +30,17 @@ class Player extends Component {
           top: this.context.state.position[1],
           left: this.context.state.position[0],
           backgroundImage: `url('${WalkSprite}')`,
-          backgroundPosition: "0 0",
+          backgroundPosition:
+            this.context.state.playerSprite[0] +
+            "px " +
+            this.context.state.playerSprite[1] +
+            "px",
           width: "32px",
           height: "36px"
         }}
       />
     );
-  };
+  }
 }
-
-window.addEventListener("keydown", e => {
-  HandleMovement(e);
-});
 
 export default Player;
