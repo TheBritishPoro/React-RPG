@@ -11,6 +11,12 @@ class World extends Component {
     this.state = {};
   }
 
+  trees = [];
+
+  componentDidMount() {
+    this.trees = this.renderTrees();
+  }
+
   render() {
     return (
       <div
@@ -23,7 +29,7 @@ class World extends Component {
       >
         <Map />
         <Player />
-        {this.renderTrees()}
+        {this.trees}
       </div>
     );
   }
