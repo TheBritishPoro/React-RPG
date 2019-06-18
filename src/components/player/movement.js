@@ -105,8 +105,8 @@ function handleMovement(e, context, treePositions) {
       case "EAST":
         treePositions.forEach(tree => {
           if (
-            context.state.position[1] >= tree[1] - 16 &&
-            context.state.position[1] <= tree[1] + 44
+            context.state.position[1] >= tree[1] - 20 &&
+            context.state.position[1] <= tree[1] + 40
           ) {
             if (
               context.state.position[0] + 32 >= tree[0] + 10 &&
