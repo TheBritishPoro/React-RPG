@@ -31,8 +31,8 @@ class World extends Component {
         }}
       >
         <Map />
-        <Player treePositions={this.treePositions} />
         {this.trees}
+        <Player treePositions={this.treePositions} />
       </div>
     );
   }

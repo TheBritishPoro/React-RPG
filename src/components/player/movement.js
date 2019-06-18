@@ -9,7 +9,7 @@ function handleMovement(e, context, treePositions) {
         let blocked = false;
         treePositions.forEach(tree => {
           if (
-            Math.sqrt(Math.pow(context.state.position[1] - tree[1], 2)) <= 70
+            Math.sqrt(Math.pow(context.state.position[1] - tree[1], 2)) <= 50
           ) {
             if (
               context.state.position[0] - tree[0] >= -10 &&
