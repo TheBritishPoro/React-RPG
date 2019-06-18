@@ -81,12 +81,27 @@ function handleMovement(e, context, treePositions) {
         }
         break;
       case "WEST":
-        context.updatePosition(
-          context.state.position[0] - 10 >= 3
-            ? context.state.position[0] - 10
-            : 748,
-          context.state.position[1]
-        );
+        treePositions.forEach(tree => {
+          if (
+            context.state.position[1] >= tree[1] - 20 &&
+            context.state.position[1] <= tree[1] + 40
+          ) {
+            if (
+              context.state.position[0] >= tree[0] + 57 &&
+              context.state.position[0] <= tree[0] + 77
+            ) {
+              blocked = true;
+            }
+          }
+        });
+        if (!blocked) {
+          context.updatePosition(
+            context.state.position[0] - 10 >= 3
+              ? context.state.position[0] - 10
+              : 748,
+            context.state.position[1]
+          );
+        }
         switch (context.state.playerSprite[0]) {
           case 0:
             context.updateSprite(-32, -35);
