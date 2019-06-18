@@ -12,9 +12,12 @@ class World extends Component {
   }
 
   trees = [];
+  treePositions = [];
 
   componentWillMount() {
-    this.trees = this.renderTrees();
+    const renderedTrees = this.renderTrees();
+    this.trees = renderedTrees.items;
+    this.treePositions = renderedTrees.positions;
   }
 
   render() {
@@ -28,7 +31,7 @@ class World extends Component {
         }}
       >
         <Map />
-        <Player />
+        <Player treePositions={this.treePositions} />
         {this.trees}
       </div>
     );
@@ -41,19 +44,24 @@ class World extends Component {
   renderTrees = () => {
     if (this.detectTrees()) {
       let items = [];
+      let positions = [];
       for (let i = 0; i <= Math.floor(Math.random() * Math.floor(14)); i++) {
+        let x = this.generateTreePosition(this.context.state.width - 83, "x");
+        let y = this.generateTreePosition(this.context.state.height - 74, "y");
         items.push(
           <Tree
             id={"tree" + i}
+            className="tree"
             key={"tree" + i}
             width="83"
             height="74"
-            left={this.generateTreePosition(this.context.state.width - 83, "x")}
-            top={this.generateTreePosition(this.context.state.height - 74, "y")}
+            left={x}
+            top={y}
           />
         );
+        positions.push([x, y]);
       }
-      return items;
+      return { items: items, positions: positions };
     }
   };
 

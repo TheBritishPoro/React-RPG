@@ -12,13 +12,13 @@ class Player extends Component {
 
   componentDidMount() {
     window.addEventListener("keydown", e => {
-      HandleMovement(e, this.context);
+      HandleMovement(e, this.context, this.props.treePositions);
     });
   }
 
   componentWillUnmount() {
     window.removeEventListener("keydown", e => {
-      HandleMovement(e, this.context);
+      HandleMovement(e, this.context, this.props.treePositions);
     });
   }
 

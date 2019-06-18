@@ -1,4 +1,4 @@
-function handleMovement(e, context) {
+function handleMovement(e, context, treePositions) {
   if (e.keyCode < 112 || e.keyCode > 123) {
     e.preventDefault();
   }
@@ -6,12 +6,27 @@ function handleMovement(e, context) {
   function directionMove(direction) {
     switch (direction) {
       case "NORTH":
-        context.updatePosition(
-          context.state.position[0],
-          context.state.position[1] - 10 >= 3
-            ? context.state.position[1] - 10
-            : 364
-        );
+        let blocked = false;
+        treePositions.forEach(tree => {
+          if (
+            Math.sqrt(Math.pow(context.state.position[1] - tree[1], 2)) <= 70
+          ) {
+            if (
+              context.state.position[0] - tree[0] >= -10 &&
+              context.state.position[0] - tree[0] <= 70
+            ) {
+              blocked = true;
+            }
+          }
+        });
+        if (!blocked) {
+          context.updatePosition(
+            context.state.position[0],
+            context.state.position[1] - 10 >= 3
+              ? context.state.position[1] - 10
+              : 364
+          );
+        }
         switch (context.state.playerSprite[0]) {
           case 0:
             context.updateSprite(-32, -105);
