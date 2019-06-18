@@ -1,17 +1,33 @@
-function handleMovement(e, context) {
+function handleMovement(e, context, treePositions) {
   if (e.keyCode < 112 || e.keyCode > 123) {
     e.preventDefault();
   }
 
   function directionMove(direction) {
+    let blocked = false;
     switch (direction) {
       case "NORTH":
-        context.updatePosition(
-          context.state.position[0],
-          context.state.position[1] - 10 >= 3
-            ? context.state.position[1] - 10
-            : 364
-        );
+        treePositions.forEach(tree => {
+          if (
+            context.state.position[1] >= tree[1] + 30 &&
+            context.state.position[1] <= tree[1] + 50
+          ) {
+            if (
+              context.state.position[0] - tree[0] >= -10 &&
+              context.state.position[0] - tree[0] <= 70
+            ) {
+              blocked = true;
+            }
+          }
+        });
+        if (!blocked) {
+          context.updatePosition(
+            context.state.position[0],
+            context.state.position[1] - 10 >= 3
+              ? context.state.position[1] - 10
+              : 364
+          );
+        }
         switch (context.state.playerSprite[0]) {
           case 0:
             context.updateSprite(-32, -105);
@@ -28,12 +44,27 @@ function handleMovement(e, context) {
         }
         break;
       case "SOUTH":
-        context.updatePosition(
-          context.state.position[0],
-          context.state.position[1] + 10 <= 364
-            ? context.state.position[1] + 10
-            : 3
-        );
+        treePositions.forEach(tree => {
+          if (
+            context.state.position[1] <= tree[1] - 10 &&
+            context.state.position[1] >= tree[1] - 30
+          ) {
+            if (
+              context.state.position[0] - tree[0] >= -10 &&
+              context.state.position[0] - tree[0] <= 70
+            ) {
+              blocked = true;
+            }
+          }
+        });
+        if (!blocked) {
+          context.updatePosition(
+            context.state.position[0],
+            context.state.position[1] + 10 <= 364
+              ? context.state.position[1] + 10
+              : 3
+          );
+        }
         switch (context.state.playerSprite[0]) {
           case 0:
             context.updateSprite(-32, 0);
@@ -50,12 +81,27 @@ function handleMovement(e, context) {
         }
         break;
       case "WEST":
-        context.updatePosition(
-          context.state.position[0] - 10 >= 3
-            ? context.state.position[0] - 10
-            : 748,
-          context.state.position[1]
-        );
+        treePositions.forEach(tree => {
+          if (
+            context.state.position[1] >= tree[1] - 20 &&
+            context.state.position[1] <= tree[1] + 40
+          ) {
+            if (
+              context.state.position[0] >= tree[0] + 57 &&
+              context.state.position[0] <= tree[0] + 77
+            ) {
+              blocked = true;
+            }
+          }
+        });
+        if (!blocked) {
+          context.updatePosition(
+            context.state.position[0] - 10 >= 3
+              ? context.state.position[0] - 10
+              : 748,
+            context.state.position[1]
+          );
+        }
         switch (context.state.playerSprite[0]) {
           case 0:
             context.updateSprite(-32, -35);
@@ -72,12 +118,27 @@ function handleMovement(e, context) {
         }
         break;
       case "EAST":
-        context.updatePosition(
-          context.state.position[0] + 10 <= 768
-            ? context.state.position[0] + 10
-            : 3,
-          context.state.position[1]
-        );
+        treePositions.forEach(tree => {
+          if (
+            context.state.position[1] >= tree[1] - 20 &&
+            context.state.position[1] <= tree[1] + 40
+          ) {
+            if (
+              context.state.position[0] + 32 >= tree[0] + 10 &&
+              context.state.position[0] + 32 <= tree[0] + 30
+            ) {
+              blocked = true;
+            }
+          }
+        });
+        if (!blocked) {
+          context.updatePosition(
+            context.state.position[0] + 10 <= 768
+              ? context.state.position[0] + 10
+              : 3,
+            context.state.position[1]
+          );
+        }
         switch (context.state.playerSprite[0]) {
           case 0:
             context.updateSprite(-32, -70);
