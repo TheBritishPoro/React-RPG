@@ -4,12 +4,22 @@ function handleMovement(e, context, treePositions) {
   }
 
   function directionMove(direction) {
+    let blocked = false;
     switch (direction) {
       case "NORTH":
-        let blocked = false;
         treePositions.forEach(tree => {
+          console.log(
+            "[ " +
+              context.state.position[1] +
+              ", " +
+              (tree[1] + 64) +
+              ", " +
+              (tree[1] + 84) +
+              " ]"
+          );
           if (
-            Math.sqrt(Math.pow(context.state.position[1] - tree[1], 2)) <= 50
+            context.state.position[1] >= tree[1] + 30 &&
+            context.state.position[1] <= tree[1] + 50
           ) {
             if (
               context.state.position[0] - tree[0] >= -10 &&
