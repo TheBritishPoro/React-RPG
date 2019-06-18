@@ -28,12 +28,44 @@ class World extends Component {
     );
   }
 
+  detectTrees = () => {
+    return document.getElementById("tree0") === null;
+  };
+
   renderTrees = () => {
-    let items = [];
-    for (let i = 0; i < 4; i++) {
-      items.push(<Tree key={"tree" + i} width="83" height="74" />);
+    if (this.detectTrees()) {
+      let items = [];
+      for (let i = 0; i <= Math.floor(Math.random() * Math.floor(14)); i++) {
+        items.push(
+          <Tree
+            id={"tree" + i}
+            key={"tree" + i}
+            width="83"
+            height="74"
+            left={this.generateTreePosition(this.context.state.width - 83, "x")}
+            top={this.generateTreePosition(this.context.state.height - 74, "y")}
+          />
+        );
+      }
+      return items;
     }
-    return items;
+  };
+
+  generateTreePosition = (max, axis) => {
+    const playerX = this.context.state.position[0];
+    const playerY = this.context.state.position[1];
+    while (true) {
+      let randpos = Math.floor(Math.random() * Math.floor(max));
+      if (axis === "x") {
+        if (Math.sqrt(Math.pow(playerX - randpos, 2)) > 32) {
+          return randpos;
+        }
+      } else {
+        if (Math.sqrt(Math.pow(playerY - randpos, 2)) > 36) {
+          return randpos;
+        }
+      }
+    }
   };
 }
 export default World;
