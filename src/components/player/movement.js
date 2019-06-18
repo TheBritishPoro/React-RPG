@@ -8,15 +8,6 @@ function handleMovement(e, context, treePositions) {
     switch (direction) {
       case "NORTH":
         treePositions.forEach(tree => {
-          console.log(
-            "[ " +
-              context.state.position[1] +
-              ", " +
-              (tree[1] + 64) +
-              ", " +
-              (tree[1] + 84) +
-              " ]"
-          );
           if (
             context.state.position[1] >= tree[1] + 30 &&
             context.state.position[1] <= tree[1] + 50
@@ -53,12 +44,27 @@ function handleMovement(e, context, treePositions) {
         }
         break;
       case "SOUTH":
-        context.updatePosition(
-          context.state.position[0],
-          context.state.position[1] + 10 <= 364
-            ? context.state.position[1] + 10
-            : 3
-        );
+        treePositions.forEach(tree => {
+          if (
+            context.state.position[1] <= tree[1] - 15 &&
+            context.state.position[1] >= tree[1] - 35
+          ) {
+            if (
+              context.state.position[0] - tree[0] >= -10 &&
+              context.state.position[0] - tree[0] <= 70
+            ) {
+              blocked = true;
+            }
+          }
+        });
+        if (!blocked) {
+          context.updatePosition(
+            context.state.position[0],
+            context.state.position[1] + 10 <= 364
+              ? context.state.position[1] + 10
+              : 3
+          );
+        }
         switch (context.state.playerSprite[0]) {
           case 0:
             context.updateSprite(-32, 0);
