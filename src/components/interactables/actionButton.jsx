@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import { AppContext } from "../../ContextProvider";
+
 class ActionButton extends Component {
+  static contextType = AppContext;
   constructor(props) {
     super(props);
     this.state = {};
@@ -13,7 +16,9 @@ class ActionButton extends Component {
         }}
       >
         <button
+          disabled={this.context.state.chopEnabled}
           style={{
+            visibility: this.context.state.chopVisibility,
             color: "#fff",
             backgroundColor: "#007bff",
             borderColor: "#007bff",

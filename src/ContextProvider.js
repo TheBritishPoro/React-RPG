@@ -8,7 +8,9 @@ class ContextProvider extends Component {
     height: 400,
     position: [3, 3],
     score: 0,
-    playerSprite: [0, 0]
+    playerSprite: [0, 0],
+    chopVisibility: "hidden",
+    chopEnabled: false
   };
   render() {
     return (
@@ -23,6 +25,13 @@ class ContextProvider extends Component {
           updateSprite: (a, b) => {
             this.setState({
               playerSprite: [a, b]
+            });
+          },
+          updateChopVisibility: setting => {
+            let chopEnabled = setting === "visible" ? true : false;
+            this.setState({
+              chopVisibility: setting,
+              chopEnabled: chopEnabled
             });
           }
         }}

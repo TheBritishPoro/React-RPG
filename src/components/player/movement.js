@@ -17,6 +17,7 @@ function handleMovement(e, context, treePositions) {
               context.state.position[0] - tree[0] <= 70
             ) {
               blocked = true;
+              context.updateChopVisibility("visible");
             }
           }
         });
@@ -27,6 +28,7 @@ function handleMovement(e, context, treePositions) {
               ? context.state.position[1] - 10
               : 364
           );
+          context.updateChopVisibility("hidden");
         }
         switch (context.state.playerSprite[0]) {
           case 0:
@@ -54,6 +56,7 @@ function handleMovement(e, context, treePositions) {
               context.state.position[0] - tree[0] <= 70
             ) {
               blocked = true;
+              context.updateChopVisibility("visible");
             }
           }
         });
@@ -64,6 +67,7 @@ function handleMovement(e, context, treePositions) {
               ? context.state.position[1] + 10
               : 3
           );
+          context.updateChopVisibility("hidden");
         }
         switch (context.state.playerSprite[0]) {
           case 0:
@@ -91,6 +95,7 @@ function handleMovement(e, context, treePositions) {
               context.state.position[0] <= tree[0] + 77
             ) {
               blocked = true;
+              context.updateChopVisibility("visible");
             }
           }
         });
@@ -101,6 +106,7 @@ function handleMovement(e, context, treePositions) {
               : 748,
             context.state.position[1]
           );
+          context.updateChopVisibility("hidden");
         }
         switch (context.state.playerSprite[0]) {
           case 0:
@@ -128,6 +134,7 @@ function handleMovement(e, context, treePositions) {
               context.state.position[0] + 32 <= tree[0] + 30
             ) {
               blocked = true;
+              context.updateChopVisibility("visible");
             }
           }
         });
@@ -138,6 +145,7 @@ function handleMovement(e, context, treePositions) {
               : 3,
             context.state.position[1]
           );
+          context.updateChopVisibility("hidden");
         }
         switch (context.state.playerSprite[0]) {
           case 0:
