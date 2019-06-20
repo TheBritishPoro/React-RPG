@@ -7,6 +7,11 @@ class ActionButton extends Component {
     super(props);
     this.state = {};
   }
+
+  handleClick = () => {
+    console.log("clicked");
+  };
+
   render() {
     return (
       <div
@@ -16,6 +21,7 @@ class ActionButton extends Component {
         }}
       >
         <button
+          onClick={this.handleClick}
           disabled={this.context.state.chopEnabled}
           style={{
             visibility: this.context.state.chopVisibility,

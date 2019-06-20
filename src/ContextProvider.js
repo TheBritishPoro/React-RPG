@@ -28,7 +28,7 @@ class ContextProvider extends Component {
             });
           },
           updateChopVisibility: setting => {
-            let chopEnabled = setting === "visible" ? true : false;
+            let chopEnabled = setting === "visible" ? false : true;
             this.setState({
               chopVisibility: setting,
               chopEnabled: chopEnabled
